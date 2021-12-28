@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="shape-board">
+		<div 
+			class="shape"
+			*ngFor="let shape of getShapes();" 
+			[ngStyle]="{'backgroundColor': shape.color, 'left.px': shape.x, 'top.px': shape.y, 'height.px': shape.height, 'width.px': shape.width }"
+			[style.border-radius]="shape.round ? '100%' : '0px'"
+			(click)="shape.move({dx:10, dy: 20})"
+		>
+			{{shape.area()}}
+		</div>
+	</div>
+</div>

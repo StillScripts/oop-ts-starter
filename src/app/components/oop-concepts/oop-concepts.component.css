@@ -1,0 +1,27 @@
+.container {
+	width: 100%;
+	height: 100%;
+	padding-top: 16px;
+}
+
+.shape-board {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #fff;
+	border: solid 2px #4C7FC8;
+}
+
+.shape {
+	position: absolute;
+	color: white;
+	border: solid black 1px;
+	font-size: 12px;
+	padding: 2px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}

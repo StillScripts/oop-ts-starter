@@ -1,0 +1,37 @@
+.container {
+	background-color: #172243;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	margin-right: 16px;
+}
+
+nav a:hover {
+	text-decoration: underline;
+	color: #4C7FC8;
+}
+
+.world {
+	width: 100%;
+	height: 100%;
+	padding: 16px;
+}
+
+.game-menu {
+	width: 240px;
+	height: 100%;
+	padding: 16px 8px;
+}

@@ -1,0 +1,23 @@
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 16px;
+}
+
+.world {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #fff;
+	border: solid 2px #4C7FC8;
+	margin-right: 32px;
+}
+	
+.game-menu {
+	width: 240px;
+	height: 100%;
+	padding: 16px 8px;
+}
+	
