@@ -7,57 +7,62 @@
  */
 
 // Attempt 1 (Bad) - Using variables
-let color = 'blue';
-let x = 40;
-let y = 40;
-let height = 64;
-let width = 64;
+let color1 = 'blue';
+let x1 = 100;
+let y1 = 20;
+let height1 = 60;
+let width1 = 80;
 
 let color2 = 'red';
-let x2 = 188;
-let y2 = 20;
-let height2 = 50;
-let width2 = 80;
-x = x + 10; // For first shape, x is now 50
-y2 = y2 + 10; // For second shape, y is now 30
-let area1 = height * width; // Area is 64*64 = 4,096
-let area2 = height2 * width2; // Area is 50*80 = 4,000
+let x2 = 40;
+let y2 = 200;
+let height2 = 60;
+let width2 = 100;
+
+x1 += 40; // Moving first rectangle 40 to the right
+y2 += 60; // Moving second rentangle 60 down
+let area1 = height1 * width1; // First rectangle has area of 4,800
+let area2 = height2 * width2; // Second rectangle has area of 6,000
+// DRY - Don't repeat yourself
 
 // Attempt 2 (Better) - Using a single object
-const shape1 = {
+const rectangle1 = {
   color: 'blue',
-  x: 40,
-  y: 40,
-  height: 64,
-  width: 64,
-};
-const shape2 = {
-  color: 'red',
-  x: 188,
+  x: 100,
   y: 20,
-  height: 50,
+  height: 60,
   width: 80,
 };
-function moveObject(dx: number, dy: number, object: Record<string, any>) {
-  object['x'] = object['x'] + dx;
-  object['y'] = object['y'] + dy;
+
+const rectangle2 = {
+  color: 'red',
+  x: 40,
+  y: 200,
+  height: 60,
+  width: 100,
+};
+
+function moveObject(dx: number, dy: number, obj: Record<string, any>) {
+  obj['x'] += dx;
+  obj['y'] += dy;
 }
-function area(h: number, w: number) {
-  return h * w;
+
+function getArea(height: number, width: number) {
+  return height * width;
 }
-moveObject(10, 20, shape1); // For first shape, x is now 50 and y is now 60
-moveObject(0, 10, shape2); // For second shape, x is still 188 but y is now 30
-area1 = area(shape1.height, shape1.width); // Area is 64*64 = 4,096
-area2 = area(shape2.height, shape2.width); // Area is 50*80 = 4,000
+
+moveObject(40, 0, rectangle1); // Moving first rectangle 40 to the right
+moveObject(0, 60, rectangle2); // Moving second rentangle 60 down
+area1 = getArea(rectangle1.height, rectangle1.width); // First rectangle has area of 4,800
+area2 = getArea(rectangle2.height, rectangle2.width); // Second rectangle has area of 6,000
 
 // Attempt 3 (Best) - Using a Class as a blueprint for objects
-export class Shape {
+class Shape {
   color: string;
   x: number;
   y: number;
   height: number;
   width: number;
-
   constructor(
     color: string,
     x: number,
@@ -72,17 +77,15 @@ export class Shape {
     this.width = width;
   }
 
-  area() {
-    return this.height * this.width;
-  }
-
   move(dx: number, dy: number) {
     this.x += dx;
     this.y += dy;
   }
+
+  area() {
+    return this.height * this.width;
+  }
 }
 
-export const shapeInstance1 = new Shape('blue', 40, 40, 64, 64);
-export const shapeInstance2 = new Shape('red', 188, 20, 80, 50);
-area1 = shapeInstance1.area(); // Area is 64*64 = 4,096
-area2 = shapeInstance2.area(); // Area is 50*80 = 4,000
+const rectObj1 = new Shape("blue", 100, 20, 60, 80);
+const rectObj2 = new Shape("red", 40, 200, 60, 100);
